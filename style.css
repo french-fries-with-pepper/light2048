@@ -17,4 +17,10 @@
 	width: 100%;
   	height: 100%;
 	background-color: lightgreen;
+
+	display: grid; 
+}
+.cell{
+	background-color: yellow;
+	border: solid 1px black;
 }

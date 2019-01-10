@@ -1,0 +1,20 @@
+.page_header{
+	text-align: center;
+}
+.main_page{
+	margin: 0 auto;
+	background-color: #a9b8b4;
+	position: relative;
+  	width: 80%;
+}
+.main_page:after {
+	content: "";
+	display: block;
+	padding-bottom: 100%;
+}
+.game_container{
+	position: absolute;
+	width: 100%;
+  	height: 100%;
+	background-color: lightgreen;
+}

@@ -6,6 +6,8 @@ const game = () => {
 	const clearCell = `<div class="cell"></div>\n`;
 	let board = document.getElementById("myGame");
 
+	const frameTime = 1000;
+
 
 	// Main object for game board:
 	let mainBoard = {
@@ -26,7 +28,7 @@ const game = () => {
 
 		// mix game field array and html
 		// use grid layout 
-		initBoard: () =>{
+		/*initBoard: () =>{
 			let cellsInBoard = "";
 			
 			for (let i = 0; i < boardSize*boardSize; i++) {
@@ -38,7 +40,25 @@ const game = () => {
 			board.style['grid-template-columns'] = `repeat(${boardSize}, 1fr)`;
 			board.style['grid-template-rows'] = `repeat(${boardSize}, 1fr)`;
 			board.innerHTML = cellsInBoard;
+		}*/
+		render: () => {
+			console.log("render");
+		},
+
+		moveUp: () =>{
+			console.log("moveUp");
+		},
+
+		moveDown: () => {
+			console.log("moveDown");
+		},
+		moveLeft: () => {
+			console.log('moveLeft');
+		},
+		moveRight: () => {
+			console.log('moveRight');
 		}
+
 
 	}
 
@@ -46,8 +66,44 @@ const game = () => {
 
 
 	mainBoard.initGame();
-	mainBoard.initBoard();
-	console.log(mainBoard.cellTable);
+
+	let gameLoop = () => {
+		mainBoard.render();
+
+		document.onkeydown = function(event) {
+        	switch (event.keyCode) {
+	           case 37:
+	                
+	                mainBoard.moveLeft();
+	              break;
+	           case 38:
+	                
+	                mainBoard.moveUp();
+	              break;
+	           case 39:
+	                
+	                mainBoard.moveRight();
+	              break;
+	           case 40:
+	                
+	                mainBoard.moveDown();
+	              break;
+	        }
+	    };
+
+     
+
+	}
+	
+		
+	
+	let gameLoopId = setInterval(gameLoop, frameTime);
+	/*document.onkeydown = function(event) {
+		if(event.keyCode === 32){
+			//clearInterval(gameLoopId);
+			console.log("stop");
+		}
+	}*/
 }
 
 

@@ -57,6 +57,11 @@ const game = () => {
 		},
 		moveRight: () => {
 			console.log('moveRight');
+		},
+
+		getRandom24: () => {
+			let result = Math.random();
+			return result>0.75 ? 4 : 2
 		}
 
 
@@ -66,27 +71,32 @@ const game = () => {
 
 
 	mainBoard.initGame();
+	
 
 	let gameLoop = () => {
-		mainBoard.render();
+		
 
 		document.onkeydown = function(event) {
         	switch (event.keyCode) {
 	           case 37:
-	                
+	    			            
 	                mainBoard.moveLeft();
+	                mainBoard.render();
 	              break;
 	           case 38:
 	                
 	                mainBoard.moveUp();
+	                mainBoard.render();
 	              break;
 	           case 39:
 	                
 	                mainBoard.moveRight();
+	                mainBoard.render();
 	              break;
 	           case 40:
 	                
 	                mainBoard.moveDown();
+	                mainBoard.render();
 	              break;
 	        }
 	    };

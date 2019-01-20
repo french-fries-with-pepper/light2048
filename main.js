@@ -64,17 +64,26 @@ const game = () => {
 			return result>0.75 ? 4 : 2
 		},
 
-		getRandomCell: () => {
+		setRandomCell24: () => {
 			let tempArr = [];
 			let k = 0;
+			let pointer = 0;
 			for (let i = 0; i < boardSize; i++) {
 				for (var j = 0; j < boardSize; j++) {
-					if (cellTable[i][j] === 0) {
-						tempArr[k] = {}  //object that contain coordinates
+					if (mainBoard.cellTable[i][j] === 0) {
+						tempArr[k] = {x:i,y:j}; 
+						k++; //object that contain coordinates
 					}
 				}
 			}
+			
 
+			function getRandomInt(max) {
+ 					return Math.floor(Math.random()*max);
+			}
+
+			pointer = tempArr[getRandomInt(tempArr.length)];
+			mainBoard.cellTable[pointer.x][pointer.y] = mainBoard.getRandom24();
 			// I have array of objects that contain coordinates of all free cells
 
 			// Chose random number and return tempArr(random)
@@ -87,7 +96,10 @@ const game = () => {
 
 
 	mainBoard.initGame();
-	
+
+
+
+	console.log(mainBoard.cellTable);
 
 	let gameLoop = () => {
 		
@@ -98,21 +110,29 @@ const game = () => {
 	    			            
 	                mainBoard.moveLeft();
 	                mainBoard.render();
+	                mainBoard.setRandomCell24();
+	                console.log(mainBoard.cellTable);
 	              break;
 	           case 38:
 	                
 	                mainBoard.moveUp();
 	                mainBoard.render();
+	                mainBoard.setRandomCell24();
+	                console.log(mainBoard.cellTable);
 	              break;
 	           case 39:
 	                
 	                mainBoard.moveRight();
 	                mainBoard.render();
+	                mainBoard.setRandomCell24();
+	                console.log(mainBoard.cellTable);
 	              break;
 	           case 40:
 	                
 	                mainBoard.moveDown();
 	                mainBoard.render();
+	                mainBoard.setRandomCell24();
+	                console.log(mainBoard.cellTable);
 	              break;
 	        }
 	    };
@@ -123,7 +143,10 @@ const game = () => {
 	
 		
 	
-	let gameLoopId = setInterval(gameLoop, frameTime);
+	let gameLoopId = setInterval(gameLoop, 30);
+
+
+
 	/*document.onkeydown = function(event) {
 		if(event.keyCode === 32){
 			//clearInterval(gameLoopId);

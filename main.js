@@ -62,8 +62,24 @@ const game = () => {
 		getRandom24: () => {
 			let result = Math.random();
 			return result>0.75 ? 4 : 2
-		}
+		},
 
+		getRandomCell: () => {
+			let tempArr = [];
+			let k = 0;
+			for (let i = 0; i < boardSize; i++) {
+				for (var j = 0; j < boardSize; j++) {
+					if (cellTable[i][j] === 0) {
+						tempArr[k] = {}  //object that contain coordinates
+					}
+				}
+			}
+
+			// I have array of objects that contain coordinates of all free cells
+
+			// Chose random number and return tempArr(random)
+
+		}
 
 	}
 

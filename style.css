@@ -20,7 +20,15 @@
 
 	display: grid; 
 }
-.cell{
+.cell0{
 	background-color: yellow;
+	border: solid 1px black;
+}
+.cell2{
+	background-color: pink;
+	border: solid 1px black;
+}
+.cell4{
+	background-color: blue;
 	border: solid 1px black;
 }

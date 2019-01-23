@@ -2,11 +2,11 @@ const game = () => {
 	console.log("game start!");
 
 	//global things about size and destination here:
-	const boardSize = 4;
-	const clearCell = `<div class="cell"></div>\n`;
+	const boardSize = 6;
+	const clearCell = `<div class="cell0"></div>\n`;
 	let board = document.getElementById("myGame");
-
-	const frameTime = 1000;
+    let dictionry = [];
+	const frameTime = 50;
 
 
 	// Main object for game board:
@@ -14,6 +14,7 @@ const game = () => {
 		size: boardSize,
 		isPossibleToPlay: true,
 		cellTable: [],
+		
 
 		// init game field
 		initGame: () =>{
@@ -23,12 +24,16 @@ const game = () => {
 					mainBoard.cellTable[i][j] = 0;
 				}
 			}
+
+			for (var i = 0; i < 100; i++) {
+				dictionry[i] = `cell${i}`;
+			}
 			console.log("initiolizing successful");
 		},
 
 		// mix game field array and html
 		// use grid layout 
-		/*initBoard: () =>{
+		initBoard: () =>{
 			let cellsInBoard = "";
 			
 			for (let i = 0; i < boardSize*boardSize; i++) {
@@ -40,9 +45,16 @@ const game = () => {
 			board.style['grid-template-columns'] = `repeat(${boardSize}, 1fr)`;
 			board.style['grid-template-rows'] = `repeat(${boardSize}, 1fr)`;
 			board.innerHTML = cellsInBoard;
-		}*/
+		},
 		render: () => {
 			console.log("render");
+			let k = 0;
+			for (let i = 0; i < mainBoard.size; i++) {
+				for (var j = 0; j < mainBoard.size; j++) {
+					cellsArr[k].className = dictionry[mainBoard.cellTable[i][j]];
+					k++;
+				}
+			}
 		},
 
 		moveUp: () =>{
@@ -59,31 +71,36 @@ const game = () => {
 			console.log('moveRight');
 		},
 
-		getRandom24: () => {
+		getRandom12: () => {
 			let result = Math.random();
-			return result>0.75 ? 4 : 2
+			return result>0.75 ? 2 : 1
 		},
 
-		setRandomCell24: () => {
+		setRandomCell12: () => {
 			let tempArr = [];
-			let k = 0;
+			let k = 0; //object that contain coordinates
 			let pointer = 0;
+			function getRandomInt(max) {
+ 					return Math.floor(Math.random()*max);
+			}
+
+
 			for (let i = 0; i < boardSize; i++) {
 				for (var j = 0; j < boardSize; j++) {
 					if (mainBoard.cellTable[i][j] === 0) {
 						tempArr[k] = {x:i,y:j}; 
-						k++; //object that contain coordinates
+						k++; 
 					}
 				}
 			}
 			
 
-			function getRandomInt(max) {
- 					return Math.floor(Math.random()*max);
+			if(tempArr.length>0){
+				pointer = tempArr[getRandomInt(tempArr.length)];
+				mainBoard.cellTable[pointer.x][pointer.y] = mainBoard.getRandom12();
 			}
 
-			pointer = tempArr[getRandomInt(tempArr.length)];
-			mainBoard.cellTable[pointer.x][pointer.y] = mainBoard.getRandom24();
+			
 			// I have array of objects that contain coordinates of all free cells
 
 			// Chose random number and return tempArr(random)
@@ -96,7 +113,9 @@ const game = () => {
 
 
 	mainBoard.initGame();
+	mainBoard.initBoard();
 
+	let cellsArr = document.getElementsByClassName("cell0");
 
 
 	console.log(mainBoard.cellTable);
@@ -110,28 +129,28 @@ const game = () => {
 	    			            
 	                mainBoard.moveLeft();
 	                mainBoard.render();
-	                mainBoard.setRandomCell24();
+	                mainBoard.setRandomCell12();
 	                console.log(mainBoard.cellTable);
 	              break;
 	           case 38:
 	                
 	                mainBoard.moveUp();
 	                mainBoard.render();
-	                mainBoard.setRandomCell24();
+	                mainBoard.setRandomCell12();
 	                console.log(mainBoard.cellTable);
 	              break;
 	           case 39:
 	                
 	                mainBoard.moveRight();
 	                mainBoard.render();
-	                mainBoard.setRandomCell24();
+	                mainBoard.setRandomCell12();
 	                console.log(mainBoard.cellTable);
 	              break;
 	           case 40:
 	                
 	                mainBoard.moveDown();
 	                mainBoard.render();
-	                mainBoard.setRandomCell24();
+	                mainBoard.setRandomCell12();
 	                console.log(mainBoard.cellTable);
 	              break;
 	        }
@@ -143,16 +162,9 @@ const game = () => {
 	
 		
 	
-	let gameLoopId = setInterval(gameLoop, 30);
+	let gameLoopId = setInterval(gameLoop, frameTime);
 
-
-
-	/*document.onkeydown = function(event) {
-		if(event.keyCode === 32){
-			//clearInterval(gameLoopId);
-			console.log("stop");
-		}
-	}*/
+	
 }
 
 

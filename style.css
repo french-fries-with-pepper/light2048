@@ -1,34 +1,59 @@
-.page_header{
-	text-align: center;
+.page_header {
+  text-align: center;
 }
-.main_page{
-	margin: 0 auto;
-	background-color: #a9b8b4;
-	position: relative;
-  	width: 80%;
+.main_page {
+  margin: 0 auto;
+  background-color: #a9b8b4;
+  position: relative;
+  width: 60%;
 }
 .main_page:after {
-	content: "";
-	display: block;
-	padding-bottom: 100%;
+  content: "";
+  display: block;
+  padding-bottom: 100%;
 }
-.game_container{
-	position: absolute;
-	width: 100%;
-  	height: 100%;
-	background-color: lightgreen;
+.game_container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: lightgreen;
 
-	display: grid; 
+  display: grid;
 }
-.cell0{
-	background-color: yellow;
-	border: solid 1px black;
+.cell {
+  border: solid 1px black;
 }
-.cell2{
-	background-color: pink;
-	border: solid 1px black;
+.cell0 {
+  background-color: yellow;
 }
-.cell4{
-	background-color: blue;
-	border: solid 1px black;
+
+.cell1 {
+  background-color: pink;
+}
+.cell2 {
+  background-color: blue;
+}
+.cell3 {
+  background-color: rgb(130, 130, 221);
+}
+.cell4 {
+  background-color: rgb(35, 35, 63);
+}
+.cell5 {
+  background-color: rgb(7, 70, 95);
+}
+.cell6 {
+  background-color: rgb(31, 83, 38);
+}
+.cell7 {
+  background-color: rgb(202, 106, 173);
+}
+.cell8 {
+  background-color: rgb(92, 255, 247);
+}
+.cell9 {
+  background-color: rgb(15, 15, 44);
+}
+.cell10 {
+  background-color: blue;
 }

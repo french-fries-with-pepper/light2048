@@ -45,9 +45,60 @@ let first5 = [1, 1, 1, 1, 1, 1, 1];
 console.log("zeroLast:", zeroLast(first2));
 console.log("zeroLast:", zeroLast(first3));
 console.log("zeroLast:", zeroLast(first4));
-console.log("zeroLast:", zeroLast(first5));*/
+console.log("zeroLast:", zeroLast(first5));
 console.log("makeTinny: ", makeTinny(first));
 console.log("makeTinny: ", makeTinny(first2));
 console.log("makeTinny: ", makeTinny(first3));
 console.log("makeTinny: ", makeTinny(first4));
-console.log("makeTinny: ", makeTinny(first5));
+console.log("makeTinny: ", makeTinny(first5));*/
+
+let matrix = [];
+let temp = [];
+let size = 5;
+for (let i = 0; i < size; i++) {
+  matrix[i] = [];
+  for (let j = 0; j < size; j++) {
+    matrix[i][j] = i + j;
+  }
+}
+
+rotateMatrix = matr => {
+  let result = [];
+  const n = matr.length;
+
+  for (let i = 0; i < n; i++) {
+    result[i] = [];
+  }
+
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n; j++) {
+      result[i][j] = matr[n - 1 - i][j];
+    }
+  }
+  return result;
+};
+
+rotateBackMatrix = matr => {
+  let result = [];
+  const n = matr.length;
+
+  for (let i = 0; i < n; i++) {
+    result[i] = [];
+    for (let j = 0; j < n; j++) {
+      result[i][j] = undefined;
+    }
+  }
+
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n; j++) {
+      result[i][j] = matr[n - 1 - j][i];
+    }
+  }
+  return result;
+};
+
+console.log("matrix is:\n", matrix);
+matrix = rotateMatrix(matrix);
+console.log("matrix is:\n", matrix);
+matrix = rotateBackMatrix(matrix);
+console.log("matrix is:\n", matrix);

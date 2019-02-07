@@ -22,9 +22,13 @@
 }
 .cell {
   border: solid 1px black;
+  text-align: center;
+  font-size: 2rem;
+  padding-top: 10%;
 }
 .cell0 {
   background-color: yellow;
+  font-size: 0.01px;
 }
 
 .cell1 {

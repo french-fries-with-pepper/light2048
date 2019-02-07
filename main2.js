@@ -22,7 +22,7 @@ const game = size => {
   makeStyles = pow => {
     let result = [];
     for (let i = 0; i < pow; i++) {
-      result[i] = `<div class="cell cell${i}">${i}</div>\n`;
+      result[i] = `<div class="cell cell${i}">${Math.pow(2, i)}</div>\n`;
     }
     return result;
   };
@@ -112,6 +112,44 @@ const game = size => {
     return res;
   };
 
+  rotateMatrix = matr => {
+    let result = [];
+    const n = matr.length;
+
+    for (let i = 0; i < n; i++) {
+      result[i] = [];
+    }
+
+    for (let i = 0; i < n; i++) {
+      for (let j = 0; j < n; j++) {
+        result[i][j] = matr[j][n - 1 - i];
+      }
+    }
+    return result;
+  };
+
+  rotateBackMatrix = matr => {
+    let result = [];
+    const n = matr.length;
+
+    for (let i = 0; i < n; i++) {
+      result[i] = [];
+      for (let j = 0; j < n; j++) {
+        result[i][j] = undefined;
+      }
+    }
+
+    for (let i = 0; i < n; i++) {
+      for (let j = 0; j < n; j++) {
+        result[i][j] = matr[n - 1 - j][i];
+      }
+    }
+    return result;
+  };
+
+  // all stuff methods also done
+  // here only moving methods
+
   moveLeft = () => {
     //make workTable moved left
 
@@ -121,7 +159,15 @@ const game = size => {
     //pushRandomCell12();
     render();
   };
-
+  moveUp = () => {
+    workTable = rotateMatrix(workTable);
+    for (let i = 0; i < size; i++) {
+      workTable[i] = makeTinny(workTable[i]);
+    }
+    workTable = rotateBackMatrix(workTable);
+    //pushRandomCell12();
+    render();
+  };
   moveRight = () => {
     for (let i = 0; i < size; i++) {
       workTable[i].reverse();
@@ -131,12 +177,17 @@ const game = size => {
     //pushRandomCell12();
     render();
   };
-
-  pushRandomCell12();
-  pushRandomCell12();
-  pushRandomCell12();
-  pushRandomCell12();
-  pushRandomCell12();
+  moveDown = () => {
+    workTable = rotateMatrix(workTable);
+    for (let i = 0; i < size; i++) {
+      workTable[i].reverse();
+      workTable[i] = makeTinny(workTable[i]);
+      workTable[i].reverse();
+    }
+    workTable = rotateBackMatrix(workTable);
+    //pushRandomCell12();
+    render();
+  };
   pushRandomCell12();
   pushRandomCell12();
 
@@ -148,9 +199,24 @@ const game = size => {
     switch (event.keyCode) {
       case 37:
         moveLeft();
+        pushRandomCell12();
+        render();
+
+        break;
+      case 38:
+        moveUp();
+        pushRandomCell12();
+        render();
         break;
       case 39:
         moveRight();
+        pushRandomCell12();
+        render();
+        break;
+      case 40:
+        moveDown();
+        pushRandomCell12();
+        render();
         break;
     }
   };

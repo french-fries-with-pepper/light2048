@@ -7,6 +7,8 @@ const game = size => {
   board.style["grid-template-columns"] = `repeat(${size}, 1fr)`;
   board.style["grid-template-rows"] = `repeat(${size}, 1fr)`;
   let workTable = [];
+  let oldCondition = "";
+  let newCondition = "";
 
   //init worktable
 
@@ -17,12 +19,13 @@ const game = size => {
     }
   }
 
-  console.log("workTable is:", workTable);
-
   makeStyles = pow => {
     let result = [];
     for (let i = 0; i < pow; i++) {
-      result[i] = `<div class="cell cell${i}">${Math.pow(2, i)}</div>\n`;
+      result[i] = `<div class="cell cell${i}"><span class="numb">${Math.pow(
+        2,
+        i
+      )}</span></div>\n`;
     }
     return result;
   };
@@ -42,8 +45,6 @@ const game = size => {
     board.innerHTML = result;
     console.log("render is OK");
   };
-
-  render();
 
   getRandomInt = max => Math.floor(Math.random() * max);
 
@@ -73,6 +74,7 @@ const game = size => {
     let tmp = getRandomCell();
     if (tmp === -1) {
       console.log("GAME OVER!!!");
+      
       return false;
     } else {
       workTable[tmp.x][tmp.y] = getRandom12();
@@ -156,8 +158,6 @@ const game = size => {
     for (let i = 0; i < size; i++) {
       workTable[i] = makeTinny(workTable[i]);
     }
-    //pushRandomCell12();
-    render();
   };
   moveUp = () => {
     workTable = rotateMatrix(workTable);
@@ -165,8 +165,6 @@ const game = size => {
       workTable[i] = makeTinny(workTable[i]);
     }
     workTable = rotateBackMatrix(workTable);
-    //pushRandomCell12();
-    render();
   };
   moveRight = () => {
     for (let i = 0; i < size; i++) {
@@ -174,8 +172,6 @@ const game = size => {
       workTable[i] = makeTinny(workTable[i]);
       workTable[i].reverse();
     }
-    //pushRandomCell12();
-    render();
   };
   moveDown = () => {
     workTable = rotateMatrix(workTable);
@@ -185,41 +181,57 @@ const game = size => {
       workTable[i].reverse();
     }
     workTable = rotateBackMatrix(workTable);
-    //pushRandomCell12();
-    render();
   };
   pushRandomCell12();
   pushRandomCell12();
 
   render();
 
-  console.log("workTable is", workTable);
-  //moveLeft();
   document.onkeydown = function(event) {
     switch (event.keyCode) {
       case 37:
+        oldCondition = board.innerHTML;
         moveLeft();
-        pushRandomCell12();
         render();
-
+        newCondition = board.innerHTML;
+        if (newCondition !== oldCondition) {
+          pushRandomCell12();
+          render();
+        }
         break;
       case 38:
+        oldCondition = board.innerHTML;
         moveUp();
-        pushRandomCell12();
         render();
+        newCondition = board.innerHTML;
+        if (newCondition !== oldCondition) {
+          pushRandomCell12();
+          render();
+        }
         break;
       case 39:
+        oldCondition = board.innerHTML;
         moveRight();
-        pushRandomCell12();
         render();
+        newCondition = board.innerHTML;
+        if (newCondition !== oldCondition) {
+          pushRandomCell12();
+          render();
+        }
         break;
       case 40:
+        oldCondition = board.innerHTML;
+
         moveDown();
-        pushRandomCell12();
         render();
+        newCondition = board.innerHTML;
+        if (newCondition !== oldCondition) {
+          pushRandomCell12();
+          render();
+        }
         break;
     }
   };
 };
 
-game(4);
+game(3);

@@ -29,7 +29,7 @@ const game = size => {
     }
     return result;
   };
-  let styles = makeStyles(20);
+  let styles = makeStyles(30);
 
   // all initiolising work are done here
 
@@ -74,7 +74,7 @@ const game = size => {
     let tmp = getRandomCell();
     if (tmp === -1) {
       console.log("GAME OVER!!!");
-      
+
       return false;
     } else {
       workTable[tmp.x][tmp.y] = getRandom12();
@@ -185,6 +185,8 @@ const game = size => {
   pushRandomCell12();
   pushRandomCell12();
 
+  //workTable = [[1,2,3,4,5],[6,7,8,9,10],[11,12,13,14,15],[16,17,18,19,20],[21,22,23,24,25]]
+
   render();
 
   document.onkeydown = function(event) {
@@ -198,6 +200,13 @@ const game = size => {
           pushRandomCell12();
           render();
         }
+        if (
+          newCondition == oldCondition &&
+          !board.innerHTML.includes("cell0")
+        ) {
+          board.innerHTML = "";
+          workTable = [];
+        }
         break;
       case 38:
         oldCondition = board.innerHTML;
@@ -207,6 +216,13 @@ const game = size => {
         if (newCondition !== oldCondition) {
           pushRandomCell12();
           render();
+        }
+        if (
+          newCondition == oldCondition &&
+          !board.innerHTML.includes("cell0")
+        ) {
+          board.innerHTML = "";
+          workTable = [];
         }
         break;
       case 39:
@@ -218,6 +234,13 @@ const game = size => {
           pushRandomCell12();
           render();
         }
+        if (
+          newCondition == oldCondition &&
+          !board.innerHTML.includes("cell0")
+        ) {
+          board.innerHTML = "";
+          workTable = [];
+        }
         break;
       case 40:
         oldCondition = board.innerHTML;
@@ -228,6 +251,13 @@ const game = size => {
         if (newCondition !== oldCondition) {
           pushRandomCell12();
           render();
+        }
+        if (
+          newCondition == oldCondition &&
+          !board.innerHTML.includes("cell0")
+        ) {
+          board.innerHTML = "";
+          workTable = [];
         }
         break;
     }

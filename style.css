@@ -19,8 +19,8 @@
   background-color: rgb(64, 71, 64);
 
   display: grid;
-  grid-gap: 2px;
-  border: rgb(64, 71, 64) solid 2px;
+  grid-gap: 3px;
+  border: rgb(64, 71, 64) solid 3px;
   border-radius: 4px;
 }
 
@@ -74,22 +74,65 @@
 }
 .cell10 {
   background-color: rgb(87, 170, 135);
+  font-size: 1.5em;
 }
 .cell11 {
   background-color: rgb(0, 223, 130);
+  font-size: 1.5em;
 }
 .cell12 {
   background-color: rgb(124, 240, 192);
+  font-size: 1.5em;
 }
 .cell13 {
   background-color: rgb(18, 129, 83);
+  font-size: 1.5em;
 }
 .cell14 {
   background-color: rgb(0, 135, 224);
+  font-size: 1.2em;
 }
 .cell15 {
   background-color: rgb(87, 151, 194);
+  font-size: 1.2em;
 }
 .cell16 {
-  background-color: rgb(126, 233, 99);
+  background-color: rgb(70, 186, 240);
+  font-size: 1.2em;
+}
+.cell17 {
+  background-color: rgb(133, 179, 49);
+  font-size: 1em;
+}
+.cell18 {
+  background-color: rgb(172, 253, 155);
+  font-size: 1em;
+}
+.cell19 {
+  background-color: rgb(49, 196, 122);
+  font-size: 1em;
+}
+.cell20 {
+  background-color: rgb(235, 103, 103);
+  font-size: 1em;
+}
+.cell21 {
+  background-color: rgb(231, 108, 78);
+  font-size: 1em;
+}
+.cell22 {
+  background-color: rgb(214, 91, 132);
+  font-size: 1em;
+}
+.cell23 {
+  background-color: rgb(212, 69, 69);
+  font-size: 1em;
+}
+.cell24 {
+  background-color: rgb(37, 230, 255);
+  font-size: 1em;
+}
+.cell25 {
+  background-color: rgb(147, 207, 235);
+  font-size: 1em;
 }

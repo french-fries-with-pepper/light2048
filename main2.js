@@ -4,9 +4,11 @@ const game = size => {
   //init some globals.
 
   let board = document.getElementById("myGame");
+  let gameScore = document.getElementById("score_container");
   board.style["grid-template-columns"] = `repeat(${size}, 1fr)`;
   board.style["grid-template-rows"] = `repeat(${size}, 1fr)`;
   let workTable = [];
+  let globalScore = 0;
   let oldCondition = "";
   let newCondition = "";
 
@@ -31,6 +33,14 @@ const game = size => {
   };
   let styles = makeStyles(30);
 
+  makeScores = pow => {
+    let result = [];
+    for (let i = 0; i < pow; i++) {
+      result[i] = Math.pow(2, i);
+    }
+    return result;
+  };
+  let scoresTable = makeScores(30);
   // all initiolising work are done here
 
   render = () => {
@@ -43,12 +53,13 @@ const game = size => {
     }
 
     board.innerHTML = result;
+    gameScore.innerHTML = globalScore;
     console.log("render is OK");
   };
 
   getRandomInt = max => Math.floor(Math.random() * max);
 
-  getRandom12 = () => (Math.random() > 0.85 ? 2 : 1);
+  getRandom12 = () => (Math.random() > 0.9090909 ? 2 : 1);
 
   getRandomCell = () => {
     let arrOfZeroCells = [];
@@ -107,6 +118,7 @@ const game = size => {
     for (let i = 0; i < tmp.length - 1; i++) {
       if (tmp[i] != 0 && tmp[i] === tmp[i + 1]) {
         tmp[i]++;
+        globalScore += scoresTable[tmp[i]];
         tmp[i + 1] = 0;
       }
     }
@@ -206,6 +218,7 @@ const game = size => {
         ) {
           board.innerHTML = "";
           workTable = [];
+          board.className += " over";
         }
         break;
       case 38:
@@ -223,6 +236,7 @@ const game = size => {
         ) {
           board.innerHTML = "";
           workTable = [];
+          board.className += " over";
         }
         break;
       case 39:
@@ -240,6 +254,7 @@ const game = size => {
         ) {
           board.innerHTML = "";
           workTable = [];
+          board.className += " over";
         }
         break;
       case 40:
@@ -258,6 +273,7 @@ const game = size => {
         ) {
           board.innerHTML = "";
           workTable = [];
+          board.className += " over";
         }
         break;
     }

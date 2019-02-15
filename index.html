@@ -12,11 +12,31 @@
   </head>
   <body>
     <h1 class="page_header">2048</h1>
-    <h3 class="score">Score is: <span id="score_container"></span></h3>
-
-    <main class="main_page">
-      <div id="myGame" class="game_container"></div>
-    </main>
+    <div class="choose_wrap">
+      choose difficulty
+      <select name="difficulty" id="diff">
+        <option value="3">3</option>
+        <option value="4" selected>4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+      </select>
+      <button class="start_button" id="start">start</button>
+    </div>
+    <section id="gameWindow" class="main_window">
+      <h3 class="score">Score is: <span id="score_container"></span></h3>
+      <div class="main_page">
+        <div id="myGame" class="game_container"></div>
+      </div>
+    </section>
     <script src="main2.js"></script>
+    <!--
+      TO DO:
+      Font size depends of length game and wv/vh
+    -->
   </body>
 </html>

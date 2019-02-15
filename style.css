@@ -6,6 +6,13 @@ html {
 .page_header {
   text-align: center;
 }
+.choose_wrap{
+  margin: 0 auto;
+  text-align: center;
+}
+.main_window{
+  display: none;
+}
 .main_page {
   margin: 0 auto;
   background-color: #a9b8b4;

@@ -280,4 +280,14 @@ const game = size => {
   };
 };
 
-game(3);
+let startBtn = document.getElementById("start");
+let diff = document.getElementById("diff");
+let gameWindow = document.getElementById("gameWindow");
+
+startBtn.onclick = () => {
+
+  game(diff.value);
+  gameWindow.style.display = "block";
+}
+
+

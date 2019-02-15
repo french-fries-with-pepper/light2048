@@ -5,10 +5,12 @@ html {
 }
 .page_header {
   text-align: center;
+  font-size: 32px;
 }
 .choose_wrap{
   margin: 0 auto;
   text-align: center;
+  font-size: 20px;
 }
 .main_window{
   display: none;

@@ -29,6 +29,7 @@ const game = size => {
         i
       )}</span></div>\n`;
     }
+
     return result;
   };
   let styles = makeStyles(30);
@@ -284,10 +285,20 @@ let startBtn = document.getElementById("start");
 let diff = document.getElementById("diff");
 let gameWindow = document.getElementById("gameWindow");
 
-startBtn.onclick = () => {
+makeCellsFontSize = () => {
+  document.getElementsByTagName("html")[0].style[
+    "font-size"
+  ] = `${document.getElementById("myGame").firstChild.clientHeight / 5}px`;
+};
 
+startBtn.onclick = () => {
   game(diff.value);
   gameWindow.style.display = "block";
-}
+  makeCellsFontSize();
+};
 
-
+window.onresize = () => {
+  if (gameWindow.style.display === "block") {
+    makeCellsFontSize();
+  }
+};

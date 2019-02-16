@@ -7,19 +7,26 @@ html {
   text-align: center;
   font-size: 32px;
 }
-.choose_wrap{
+.choose_wrap {
   margin: 0 auto;
   text-align: center;
   font-size: 20px;
 }
-.main_window{
+.main_window {
   display: none;
 }
 .main_page {
   margin: 0 auto;
   background-color: #a9b8b4;
   position: relative;
-  width: 95%;
+  width: 70vw;
+  height: 70vw;
+}
+@media only screen and (orientation: landscape) {
+  .main_page {
+    width: 70vh;
+    height: 70vh;
+  }
 }
 .main_page:after {
   content: "";
@@ -53,7 +60,7 @@ html {
   transform: translate(-50%, -50%);
 }
 
-.score{
+.score {
   text-align: center;
 }
 

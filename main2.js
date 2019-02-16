@@ -21,6 +21,9 @@ const game = size => {
     }
   }
 
+  //reset if started new game, over finished.
+  board.className = "game_container";
+
   makeStyles = pow => {
     let result = [];
     for (let i = 0; i < pow; i++) {

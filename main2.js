@@ -85,10 +85,33 @@ const game = size => {
     }
   };
 
+  checkIsPossibleToPlay = () => {
+    let result = false;
+    let tempTable = [];
+    tempTable = rotateMatrix(workTable);
+
+    for (let i = 0; i < size; i++) {
+      for (let j = 0; j < size - 1; j++) {
+        if (
+          workTable[i][j] === workTable[i][j + 1] ||
+          tempTable[i][j] === tempTable[i][j + 1]
+        ) {
+          result = true;
+          return result;
+        }
+      }
+    }
+    return result;
+  };
+
   pushRandomCell12 = () => {
     let tmp = getRandomCell();
+
     if (tmp === -1) {
-      console.log("GAME OVER!!!");
+      if (!checkIsPossibleToPlay()) {
+        console.log("GAME OVER!!!");
+        board.className += " over";
+      }
 
       return false;
     } else {
@@ -198,6 +221,11 @@ const game = size => {
     }
     workTable = rotateBackMatrix(workTable);
   };
+  gameOver = () => {
+    board.innerHTML = "";
+    workTable = [];
+    board.className += " over";
+  };
   pushRandomCell12();
   pushRandomCell12();
 
@@ -209,56 +237,45 @@ const game = size => {
     switch (event.keyCode) {
       case 37:
         oldCondition = board.innerHTML;
+
         moveLeft();
         render();
         newCondition = board.innerHTML;
+
         if (newCondition !== oldCondition) {
           pushRandomCell12();
           render();
+        } else {
+          checkIsPossibleToPlay() ? console.log("play") : gameOver();
         }
-        if (
-          newCondition == oldCondition &&
-          !board.innerHTML.includes("cell0")
-        ) {
-          board.innerHTML = "";
-          workTable = [];
-          board.className += " over";
-        }
+
         break;
       case 38:
         oldCondition = board.innerHTML;
+
         moveUp();
         render();
         newCondition = board.innerHTML;
+
         if (newCondition !== oldCondition) {
           pushRandomCell12();
           render();
-        }
-        if (
-          newCondition == oldCondition &&
-          !board.innerHTML.includes("cell0")
-        ) {
-          board.innerHTML = "";
-          workTable = [];
-          board.className += " over";
+        } else {
+          checkIsPossibleToPlay() ? console.log("play") : gameOver();
         }
         break;
       case 39:
         oldCondition = board.innerHTML;
+
         moveRight();
         render();
         newCondition = board.innerHTML;
+
         if (newCondition !== oldCondition) {
           pushRandomCell12();
           render();
-        }
-        if (
-          newCondition == oldCondition &&
-          !board.innerHTML.includes("cell0")
-        ) {
-          board.innerHTML = "";
-          workTable = [];
-          board.className += " over";
+        } else {
+          checkIsPossibleToPlay() ? console.log("play") : gameOver();
         }
         break;
       case 40:
@@ -267,18 +284,14 @@ const game = size => {
         moveDown();
         render();
         newCondition = board.innerHTML;
+
         if (newCondition !== oldCondition) {
           pushRandomCell12();
           render();
+        } else {
+          checkIsPossibleToPlay() ? console.log("play") : gameOver();
         }
-        if (
-          newCondition == oldCondition &&
-          !board.innerHTML.includes("cell0")
-        ) {
-          board.innerHTML = "";
-          workTable = [];
-          board.className += " over";
-        }
+
         break;
     }
   };

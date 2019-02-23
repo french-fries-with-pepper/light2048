@@ -5,7 +5,11 @@ const game = size => {
   var myElement = document.getElementById("all");
   var mc = new Hammer(myElement);
 
-  mc.get("pan").set({ direction: Hammer.DIRECTION_ALL });
+  mc.get("pan").set({
+    direction: Hammer.DIRECTION_ALL,
+    threshold: 100,
+    pointers: 0
+  });
 
   /*mc.on("panleft panright panup pandown tap press", function(ev) {
     console.log(ev.type + " gesture detected.");

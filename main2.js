@@ -1,6 +1,15 @@
 const game = size => {
   console.log("game start!");
 
+  //init swipe detect class
+  var myElement = document.getElementById("all");
+  var mc = new Hammer(myElement);
+
+  mc.get("pan").set({ direction: Hammer.DIRECTION_ALL });
+
+  /*mc.on("panleft panright panup pandown tap press", function(ev) {
+    console.log(ev.type + " gesture detected.");
+  });*/
   //init some globals.
 
   let board = document.getElementById("myGame");
@@ -295,6 +304,71 @@ const game = size => {
         break;
     }
   };
+  mc.on("panleft panright panup pandown", function(ev) {
+    console.log(ev.type + " gesture detected.");
+    switch (ev.type) {
+      case "panleft":
+        oldCondition = board.innerHTML;
+
+        moveLeft();
+        render();
+        newCondition = board.innerHTML;
+
+        if (newCondition !== oldCondition) {
+          pushRandomCell12();
+          render();
+        } else {
+          checkIsPossibleToPlay() ? console.log("play") : gameOver();
+        }
+        console.log("left");
+        break;
+      case "panright":
+        oldCondition = board.innerHTML;
+
+        moveRight();
+        render();
+        newCondition = board.innerHTML;
+
+        if (newCondition !== oldCondition) {
+          pushRandomCell12();
+          render();
+        } else {
+          checkIsPossibleToPlay() ? console.log("play") : gameOver();
+        }
+        console.log("right");
+        break;
+      case "panup":
+        oldCondition = board.innerHTML;
+
+        moveUp();
+        render();
+        newCondition = board.innerHTML;
+
+        if (newCondition !== oldCondition) {
+          pushRandomCell12();
+          render();
+        } else {
+          checkIsPossibleToPlay() ? console.log("play") : gameOver();
+        }
+        console.log("up");
+        break;
+      case "pandown":
+        oldCondition = board.innerHTML;
+
+        moveDown();
+        render();
+        newCondition = board.innerHTML;
+
+        if (newCondition !== oldCondition) {
+          pushRandomCell12();
+          render();
+        } else {
+          checkIsPossibleToPlay() ? console.log("play") : gameOver();
+        }
+        console.log("down");
+        break;
+    }
+  });
 };
 
 let startBtn = document.getElementById("start");

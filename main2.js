@@ -5,15 +5,14 @@ const game = size => {
   var myElement = document.getElementById("all");
   var mc = new Hammer(myElement);
 
-  mc.get("pan").set({
-    direction: Hammer.DIRECTION_ALL,
-    threshold: 100,
-    pointers: 0
+  mc.get("swipe").set({
+    direction: Hammer.DIRECTION_ALL
   });
 
-  /*mc.on("panleft panright panup pandown tap press", function(ev) {
-    console.log(ev.type + " gesture detected.");
-  });*/
+  mc.on("swipeleft swiperight swipeup swipedown", function(ev) {
+    console.log(ev.type + "detected");
+  });
+
   //init some globals.
 
   let board = document.getElementById("myGame");
@@ -308,10 +307,9 @@ const game = size => {
         break;
     }
   };
-  mc.on("panleft panright panup pandown", function(ev) {
-    console.log(ev.type + " gesture detected.");
+  mc.on("swipeleft swiperight swipeup swipedown", function(ev) {
     switch (ev.type) {
-      case "panleft":
+      case "swipeleft":
         oldCondition = board.innerHTML;
 
         moveLeft();
@@ -326,7 +324,7 @@ const game = size => {
         }
         console.log("left");
         break;
-      case "panright":
+      case "swiperight":
         oldCondition = board.innerHTML;
 
         moveRight();
@@ -341,7 +339,7 @@ const game = size => {
         }
         console.log("right");
         break;
-      case "panup":
+      case "swipeup":
         oldCondition = board.innerHTML;
 
         moveUp();
@@ -356,7 +354,7 @@ const game = size => {
         }
         console.log("up");
         break;
-      case "pandown":
+      case "swipedown":
         oldCondition = board.innerHTML;
 
         moveDown();

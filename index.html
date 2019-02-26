@@ -15,19 +15,20 @@
   <body id="all">
     <div class="choose_wrap">
       <h1 class="page_header">2048</h1>
-      <select name="difficulty" id="diff">
-        <optgroup label="board size" selected></optgroup>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-      </select>
-
+      <div class="custom-select">
+        <select name="difficulty" id="diff">
+          <optgroup label="board size" selected></optgroup>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+        </select>
+      </div>
       <button class="start_button" id="start">start</button>
       <h3 class="score">Score is: <span id="score_container"></span></h3>
     </div>
@@ -37,8 +38,8 @@
     <script src="https://hammerjs.github.io/dist/hammer.js"></script>
     <script src="main2.js"></script>
     <!--
-      TO DO:
-      size game window to fit all screens
+      TO_DO:
+      
     -->
   </body>
 </html>

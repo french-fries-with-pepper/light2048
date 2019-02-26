@@ -3,7 +3,7 @@ const game = size => {
 
   //init swipe detect class
   var myElement = document.getElementById("all");
-  var mc = new Hammer(myElement);
+  const mc = new Hammer(myElement);
 
   mc.get("swipe").set({
     direction: Hammer.DIRECTION_ALL

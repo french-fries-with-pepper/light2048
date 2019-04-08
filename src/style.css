@@ -22,7 +22,7 @@ html {
   top: 0;
   left: 0;
   right: 0;
-  
+
   padding-top: 10px;
   padding-bottom: 10px;
 
@@ -51,6 +51,7 @@ html {
   padding: 4px 3px 3px 5px;
   margin: 0;
   font: inherit;
+  color: black;
   outline: none; /* remove focus ring from Webkit */
   line-height: 1.2;
   background: #dfcbcb;
@@ -114,6 +115,7 @@ html {
   padding-right: 12px;
   border-radius: 12px;
   font: inherit;
+  color: black;
   outline: none; /* remove focus ring from Webkit */
   line-height: 1.2;
   background-color: #dfcbcb;
